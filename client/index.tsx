@@ -9,6 +9,8 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 
 import App from './App';
 
+import '/public/styles/global.css';
+import '/public/styles/habit-list.css';
 
 const routes = createRoutesFromElements(<Route path="/" element={<App />} />);
 
