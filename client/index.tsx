@@ -7,14 +7,31 @@ import {
 } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import App from './App';
+import AppLayout from './components/AppLayout';
+import LoadComponent from './components/LoadComponent';
 
-import '/public/styles/global.css';
-import '/public/styles/habit-list.css';
+import {
+	ErrorPage,
+	HabitList,
+	DeletedHabits,
+	PlantCollection,
+} from './pages/index';
 
-const routes = createRoutesFromElements(<Route path="/" element={<App />} />);
+export const routes = createRoutesFromElements(
+	<Route path="/" element={<AppLayout />} errorElement={<ErrorPage />}>
+		<Route index element={<LoadComponent component={HabitList} />} />
+		<Route
+			path="deleted-habits"
+			element={<LoadComponent component={DeletedHabits} />}
+		/>
+		<Route
+			path="plant-collection"
+			element={<LoadComponent component={PlantCollection} />}
+		/>
+	</Route>
+);
 
-export function AppProvider() {
+function AppProvider() {
 	return <RouterProvider router={createBrowserRouter(routes)} />;
 }
 
