@@ -12,6 +12,7 @@ import LoadComponent from './components/LoadComponent';
 
 import {
 	ErrorPage,
+	HomeScreen,
 	HabitList,
 	DeletedHabits,
 	PlantCollection,
@@ -19,7 +20,11 @@ import {
 
 export const routes = createRoutesFromElements(
 	<Route path="/" element={<AppLayout />} errorElement={<ErrorPage />}>
-		<Route index element={<LoadComponent component={HabitList} />} />
+		<Route index element={<LoadComponent component={HomeScreen} />} />
+		<Route
+			path="habit-list"
+			element={<LoadComponent component={HabitList} />}
+		/>
 		<Route
 			path="deleted-habits"
 			element={<LoadComponent component={DeletedHabits} />}
